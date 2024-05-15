@@ -1,0 +1,33 @@
+19p 연습
+#include <iostream>
+using namespace std;
+class a {
+public:
+	a() { i++; aa = NULL; cout << i << " con\n"; }
+	~a();
+	float x, y, * aa;
+	static int i;
+};
+int a::i = 0;
+a::~a() {
+	if (aa != NULL) {
+		delete[] aa;
+		cout << i << " done \n";
+		aa = NULL;
+	}
+	else { cout << i << " none \n"; }
+	i--;
+}
+void main() { cout << "Main1 ";
+	a cc; //i = 1 
+	cc.x = 123;	cout << "Main2 ";
+	cc.~a(); //cout none i는 1이 출력되고 0이 됨
+	cc.aa = new float[123];
+	cc.aa[10] = 456; cout << "Main ";
+	cout << cc.x << " ";
+	cout << cc.aa[10] << endl; cout << "Main3 ";
+	cc.~a(); //aa는 NULL이 아니므로	cout done, i는 0이 출력되고 -1이 되고 aa는 NULL이 됨
+
+	cout << "Main4 " << cc.x << "\n"; // Main4 123 이 출력
+	cout << "Main5 "; //main을 나가면서 destruct Null memory. aa가 NULL이므로 Main5 -1 none이 출력
+}
