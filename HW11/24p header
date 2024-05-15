@@ -1,0 +1,26 @@
+#pragma once
+using namespace std;
+class CHealth {
+public:
+	// constructors
+	CHealth() { age = 20; gender = 0; };
+	// member data
+
+	float gender, age;
+
+	// member functions (methods)
+	void Ggender() {
+		gender = rand() % 4;
+		showg();
+	}
+private:
+	// private member function
+	void showg() {
+		if (gender == 1) {
+			cout << "is male" << endl;
+		}
+		else {
+			cout << "is female" << endl;
+		}
+	}
+};
