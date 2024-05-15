@@ -1,0 +1,32 @@
+22p
+//만약 main 내에 cout << b.y << endl; cout << b.gety << endl; 와 같은 코드가 있다면 오류가 난다. 왜냐하면 y와 gety는 private member라서 class내에서만 사용할 수 있고 main과 같은 다른 곳에선 사용할 수 없다.
+
+#include <iostream>
+using namespace std;
+class a {
+public:
+	float x = 100;
+	void showxy() {
+		cout << "x " << x << endl;
+		cout << "y " << y << endl; // private member data를 public member function 에서는 사용 가능하다.
+		cout << "y1 " << gety() << endl; // private member function을 사용할 수 있다.
+	}
+	void changey(float z) {
+		y = z;
+	}
+	float showy() {
+		return y;
+	}
+private:
+	float y = 200;
+	float gety() {
+		return y;
+	}
+};
+void main() {
+	a b;
+	b.showxy(); // public member function을 사용하여 private member data를 출력할 수 있고 private member function도 사용 가능하다.
+	b.changey(666); // public member function을 사용하여 private member data를 바꿀 수도 있다.
+	b.showxy();
+	cout << b.showy() << endl; // public member function으로 private member data를 return한다.
+}
