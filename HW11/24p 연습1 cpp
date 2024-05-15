@@ -1,0 +1,16 @@
+#include <iostream>
+#include "health.h"
+#include <stdlib.h>
+using namespace std;
+int main() {
+
+	CHealth* students = new CHealth[5];
+
+	for (int i = 0; i < 5; i++) {
+		cout << "students" << i;
+		students[i].Ggender();
+		students[i].age = rand() % 60;
+		cout << "students" << i << " is " << students[i].age << " years old" << endl;
+	}
+	return 123;
+}
